@@ -1,0 +1,463 @@
+.app-shell {
+  min-height: 100%;
+  padding: 40px 24px 64px;
+  display: flex;
+  justify-content: center;
+}
+
+.screen-only {
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- Panel shell ---------- */
+
+.panel {
+  background: var(--surface);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  animation: rise 420ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel-header {
+  background: linear-gradient(135deg, var(--maroon-700), var(--maroon-900));
+  color: #fff;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.panel-header h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.back-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: transparent;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateX(-2px);
+}
+
+.panel-body {
+  padding: 20px 24px 8px;
+}
+
+/* ---------- Search ---------- */
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.search-row:focus-within {
+  border-color: var(--maroon-600);
+  box-shadow: 0 0 0 4px var(--maroon-100);
+}
+
+.search-icon {
+  color: var(--ink-muted);
+  flex-shrink: 0;
+}
+
+.search-row input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 0.95rem;
+  background: transparent;
+  color: var(--ink);
+}
+
+.clear-btn {
+  border: none;
+  background: var(--maroon-100);
+  color: var(--maroon-700);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+/* ---------- Table ---------- */
+
+.table-scroll {
+  max-height: 440px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: #fbf6ee;
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--maroon-900);
+  border-bottom: 1.5px solid var(--border-strong);
+  z-index: 1;
+}
+
+tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+}
+
+tbody tr {
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+tbody tr:hover {
+  background: #fdf9f2;
+}
+
+tbody tr.row-selected {
+  background: var(--maroon-100);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.col-check {
+  width: 42px;
+}
+
+input[type='checkbox'] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--maroon-700);
+  cursor: pointer;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.muted {
+  color: var(--ink-muted);
+}
+
+.recipe-link {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.recipe-status {
+  color: var(--success);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--ink-muted);
+  padding: 32px 16px;
+}
+
+/* ---------- Footer ---------- */
+
+.panel-footer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 24px;
+  border-top: 1px solid var(--border);
+  background: #fdfaf4;
+}
+
+.selected-count {
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+}
+
+.selected-count strong {
+  color: var(--maroon-900);
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.qty-label {
+  font-weight: 700;
+  color: var(--maroon-900);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  margin-right: 4px;
+}
+
+.qty-control button {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  border: none;
+  background: var(--maroon-700);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.qty-control button:hover {
+  background: var(--maroon-900);
+  transform: translateY(-1px);
+}
+
+.qty-control input {
+  width: 46px;
+  text-align: center;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 9px;
+  padding: 6px 4px;
+  font-weight: 700;
+  color: var(--maroon-900);
+}
+
+.print-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: var(--maroon-700);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 22px;
+  border-radius: 11px;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+
+.print-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -12px rgba(92, 15, 34, 0.45);
+  background: var(--maroon-900);
+}
+
+.print-btn:disabled {
+  background: #d8c9c0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ---------- Sticker (shared between preview + print) ---------- */
+
+.sticker {
+  width: 34mm;
+  height: 20mm;
+  box-sizing: border-box;
+  padding: 1.4mm 2mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4mm;
+  font-family: var(--font-mono);
+  background: #fff;
+  overflow: hidden;
+}
+
+.sticker-line {
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticker-comp {
+  font-size: 6.2pt;
+  font-weight: 600;
+  color: #444;
+}
+
+.sticker-shade {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.01em;
+}
+
+.sticker-dyelot {
+  font-size: 7.5pt;
+  color: #1a1a1a;
+}
+
+.sticker-brand {
+  font-size: 6.6pt;
+  color: #333;
+}
+
+/* ---------- Preview panel (screen only) ---------- */
+
+.preview-panel {
+  background: var(--surface);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  padding: 20px 24px 24px;
+  animation: rise 420ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+
+.preview-header > span:first-child {
+  font-weight: 700;
+  color: var(--maroon-900);
+  font-size: 0.95rem;
+}
+
+.preview-meta {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.preview-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.preview-sticker {
+  border: 1.5px dashed var(--border-strong);
+  border-radius: 3px;
+  background: #fffdf9;
+  transform: scale(2.35);
+  transform-origin: left center;
+  margin-right: 26mm;
+  margin-bottom: 6mm;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.preview-more {
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ---------- Print output ---------- */
+
+.print-only {
+  display: none;
+}
+
+.sticker-row {
+  display: grid;
+  gap: 0;
+}
+
+@media print {
+  /* Fallback only — StickerSheet injects its own <style> with the exact
+     row size (3 stickers wide x 1 sticker tall). Every row prints as its
+     own page, so a page never holds more than one row of 3. */
+  @page {
+    size: 102mm 20mm;
+    margin: 0;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* .app-shell has screen-only padding (for centering the panel on screen) —
+     that padding must not leak into print, or it pushes the sticker rows
+     past the page boundary and splits a single row across two pages. */
+  .app-shell {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    min-height: 0 !important;
+  }
+
+  .screen-only {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .sticker-sheet {
+    margin: 0;
+    padding: 0;
+  }
+
+  .sticker-row {
+    gap: 0;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .sticker-row:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .sticker {
+    break-inside: avoid;
+  }
+}

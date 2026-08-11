@@ -1,0 +1,48 @@
+:root {
+  --maroon-900: #5C0F22;
+  --maroon-700: #961E3B;
+  --maroon-600: #AE2544;
+  --maroon-100: #F7E3E7;
+  --paper: #FBF6EE;
+  --surface: #FFFFFF;
+  --border: #EBDFCB;
+  --border-strong: #DCC9A8;
+  --ink: #241A1B;
+  --ink-muted: #8C7A70;
+  --success: #2E8B4F;
+  --gold: #BE9A34;
+
+  --font-ui: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --shadow-sm: 0 1px 2px rgba(92, 15, 34, 0.06);
+  --shadow-md: 0 8px 24px -8px rgba(92, 15, 34, 0.18);
+  --shadow-lg: 0 20px 45px -18px rgba(92, 15, 34, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(92, 15, 34, 0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
