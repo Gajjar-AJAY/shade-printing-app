@@ -126,20 +126,18 @@ export default function GembaScreen({ onBack }) {
           <div className="preview-panel">
             <div className="preview-header">
               <span>Sticker preview</span>
-              <span className="preview-meta">
+              {/* <span className="preview-meta">
                 100.4mm × 12mm · {selectedRecords.length * qty} label
                 {selectedRecords.length * qty === 1 ? '' : 's'} will print
-              </span>
+              </span> */}
             </div>
+            {/* was selectedRecords.slice(0, 6) + a "+N more" line — now shows everything selected */}
             <div className="preview-strip gemba-preview-strip">
-              {selectedRecords.slice(0, 6).map((r) => (
+              {selectedRecords.map((r) => (
                 <div className="sticker gemba-sticker preview-sticker gemba-preview-sticker" key={r.atqor_gembaid}>
                   <div className="sticker-line gemba-sticker-number">{r.atqor_gembanumber}</div>
                 </div>
               ))}
-              {selectedRecords.length > 6 && (
-                <div className="preview-more">+{selectedRecords.length - 6} more Gemba{selectedRecords.length - 6 === 1 ? '' : 's'}</div>
-              )}
             </div>
           </div>
         )}
