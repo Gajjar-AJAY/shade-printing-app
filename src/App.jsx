@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import HomeMenu from './components/Homemenu.jsx'
-import ShadeScreen from './components/ShadeScreen.jsx'
+import ShadeScreen from './components/Shadescreen.jsx'
 import GembaScreen from './components/Gembascreen.jsx';
 import './App.css'
 
