@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import GembaTable from './GembaTable.jsx'
+import GembaTable from './Gembatable.jsx'
 import GembaStickerSheet from './GembaStickerSheet.jsx'
 import { useStickerPrinter } from '../hooks/useStickerPrinter.js'
 import { brand } from '../data.js'
