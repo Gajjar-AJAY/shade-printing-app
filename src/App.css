@@ -461,3 +461,226 @@ input[type='checkbox'] {
     break-inside: avoid;
   }
 }
+
+
+/* ================================================================
+   Add everything below to the bottom of your existing App.css
+   (all other rules are untouched — this only adds Home Menu styles)
+   ================================================================ */
+
+/* ---------- Home menu ---------- */
+
+.home-shell {
+  min-height: 100%;
+  padding: 40px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--surface);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: 32px 28px;
+  animation: rise 420ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.home-header h1 {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--maroon-900);
+  letter-spacing: 0.01em;
+}
+
+.home-header p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+}
+
+.home-buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.home-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  border: 1.5px solid var(--border-strong);
+  background: #fdfaf4;
+  border-radius: 14px;
+  padding: 18px 20px;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.home-btn:hover,
+.home-btn:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--maroon-600);
+  background: #fff;
+  box-shadow: 0 16px 32px -16px rgba(92, 15, 34, 0.35);
+  outline: none;
+}
+
+.home-btn:active {
+  transform: translateY(-1px);
+}
+
+.home-btn-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--maroon-700), var(--maroon-900));
+  box-shadow: var(--shadow-md);
+}
+
+.home-btn-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.home-btn-title {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--maroon-900);
+}
+
+.home-btn-sub {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.home-btn-arrow {
+  flex-shrink: 0;
+  color: var(--maroon-600);
+  transition: transform 160ms ease;
+}
+
+.home-btn:hover .home-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- Responsive tweaks (applies to home + existing panels) ---------- */
+
+@media (max-width: 640px) {
+  .home-shell {
+    padding: 24px 16px;
+  }
+
+  .home-card {
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+
+  .home-btn {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .home-btn-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .home-btn-title {
+    font-size: 0.95rem;
+  }
+
+  .app-shell {
+    padding: 20px 12px 40px;
+  }
+
+  .panel-header {
+    padding: 14px 16px;
+  }
+
+  .panel-body {
+    padding: 16px 16px 4px;
+  }
+
+  .panel-footer {
+    flex-wrap: wrap;
+    row-gap: 12px;
+    padding: 16px;
+  }
+
+  .qty-control {
+    margin-left: 0;
+  }
+
+  .print-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  table {
+    font-size: 0.82rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 10px 10px;
+  }
+}
+
+/* ================================================================
+   Append to the bottom of App.css — must come AFTER the base .sticker
+   rule so these overrides win (same specificity, later wins).
+   ================================================================ */
+
+/* ---------- Gemba sticker (100.4mm x 12mm, 1 per row) ---------- */
+
+
+.gemba-sticker {
+  width: calc(100.4mm / 3);
+  height: 12mm;
+  padding: 0.8mm 1.6mm;
+  gap: 0.3mm;
+}
+ 
+.gemba-sticker-number {
+  font-size: 9.5pt;
+  font-weight: 800;
+  color: #000;
+  letter-spacing: 0.01em;
+}
+ 
+.gemba-sticker .sticker-brand {
+  font-size: 5.5pt;
+}
+ 
+/* Screen preview: stickers are now close to Shade's size, so reuse the
+   same "scale up small label, wrap in a row" approach instead of the
+   stacked-column layout from before. */
+.gemba-preview-strip {
+  flex-direction: row;
+  align-items: center;
+}
+ 
+.gemba-preview-sticker {
+  transform: scale(2.3);
+  transform-origin: left center;
+  margin-right: 22mm;
+  margin-bottom: 5mm;
+}

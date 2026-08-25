@@ -98,3 +98,34 @@ export const brand = {
   company: 'ARVIND',
   operatorCode: 'J',
 }
+
+
+export const gembaRecords = [
+  {
+    id: 'g1',
+    gembaNumber: 'GEMBA-1001',
+    unit: 'A1',
+    lines: ['L-02', 'L-03'],
+    process: 'Weaving',
+    processStatus: 'Active',
+    createdOn: '2026-08-20T09:15:00',
+  },
+  {
+    id: 'g2',
+    gembaNumber: 'GEMBA-1002',
+    unit: 'A2',
+    lines: ['L-05'],
+    process: 'Dyeing',
+    processStatus: 'Active',
+    createdOn: '2026-08-21T11:40:00',
+  },
+  {
+    id: 'g3',
+    gembaNumber: 'GEMBA-1003',
+    unit: 'B1',
+    lines: ['L-08', 'L-09', 'L-10'],
+    process: 'Finishing',
+    processStatus: 'On Hold',
+    createdOn: '2026-08-22T14:05:00',
+  },
+]

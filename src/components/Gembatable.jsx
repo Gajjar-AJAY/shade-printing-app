@@ -1,16 +1,8 @@
 import { useMemo, useState } from 'react'
 
-function formatDate(iso) {
-  const d = new Date(iso)
-  const pad = (n) => String(n).padStart(2, '0')
-  let hours = d.getHours()
-  const minutes = pad(d.getMinutes())
-  const ampm = hours >= 12 ? 'PM' : 'AM'
-  hours = hours % 12 || 12
-  return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(hours)}:${minutes} ${ampm}`
-}
-
-export default function ShadeTable({
+// NOTE: Table only shows Gemba Number per current requirement. Other fields
+// intentionally not rendered/filtered here.
+export default function GembaTable({
   records,
   selectedIds,
   onToggleSelect,
@@ -28,24 +20,24 @@ export default function ShadeTable({
     const q = search.trim().toLowerCase()
     if (!q) return records
     return records.filter((r) =>
-      r.shadeNumber.toLowerCase().includes(q) ||
-      r.dyeLots.join(' ').toLowerCase().includes(q) ||
-      r.recipe.toLowerCase().includes(q)
+      r.atqor_gembanumber.toLowerCase().includes(q)
     )
   }, [records, search])
 
-  const allVisibleSelected = filtered.length > 0 && filtered.every((r) => selectedIds.has(r.id))
+  const allVisibleSelected = filtered.length > 0 && filtered.every((r) => selectedIds.has(r.atqor_gembaid))
   const selectedCount = selectedIds.size
 
   return (
     <div className="panel">
       <div className="panel-header">
-        <button className="back-btn" aria-label="Back" type="button" onClick={onBack}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-        <h1>Shade Number Printing</h1>
+        {onBack && (
+          <button className="back-btn" aria-label="Back" type="button" onClick={onBack}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        )}
+        <h1>Gemba Number Printing</h1>
       </div>
 
       <div className="panel-body">
@@ -56,7 +48,7 @@ export default function ShadeTable({
           </svg>
           <input
             type="text"
-            placeholder="Search shade number, dye lot or recipe…"
+            placeholder="Search Gemba number…"
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
           />
@@ -79,40 +71,32 @@ export default function ShadeTable({
                     aria-label="Select all visible rows"
                   />
                 </th>
-                <th>Shade Number</th>
-                <th>Dye Lots</th>
-                <th>Recipe</th>
-                <th>Created On</th>
+                <th>Gemba Number</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map((r) => {
-                const checked = selectedIds.has(r.id)
+                const checked = selectedIds.has(r.atqor_gembaid)
                 return (
                   <tr
-                    key={r.id}
+                    key={r.atqor_gembaid}
                     className={checked ? 'row-selected' : ''}
-                    onMouseEnter={() => setHoveredRow(r.id)}
+                    onMouseEnter={() => setHoveredRow(r.atqor_gembaid)}
                     onMouseLeave={() => setHoveredRow(null)}
-                    onClick={() => onToggleSelect(r.id)}
+                    onClick={() => onToggleSelect(r.atqor_gembaid)}
                   >
                     <td className="col-check" onClick={(e) => e.stopPropagation()}>
-                      <input type="checkbox" checked={checked} onChange={() => onToggleSelect(r.id)} />
+                      <input type="checkbox" checked={checked} onChange={() => onToggleSelect(r.atqor_gembaid)} />
                     </td>
-                    <td className="mono strong">{r.shadeNumber}</td>
-                    <td className="mono muted">{r.dyeLots.join(', ')}</td>
-                    <td>
-                      <span className="recipe-link">{r.recipe}</span>
-                      <span className="recipe-status"> - {r.recipeStatus}</span>
-                    </td>
-                    <td className="muted">{formatDate(r.createdOn)}</td>
+                    <td className="mono strong">{r.atqor_gembanumber}</td>
                   </tr>
                 )
               })}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="empty-state">
-                    No shade numbers match “{search}”.
+                  {/* was colSpan={5} — only 2 columns now (checkbox + Gemba Number) */}
+                  <td colSpan={2} className="empty-state">
+                    No Gemba numbers match “{search}”.
                   </td>
                 </tr>
               )}
@@ -123,7 +107,7 @@ export default function ShadeTable({
 
       <div className="panel-footer">
         <div className="selected-count">
-          Selected: <strong>{selectedCount}</strong> Shade Number{selectedCount === 1 ? '' : 's'}
+          Selected: <strong>{selectedCount}</strong> Gemba Number{selectedCount === 1 ? '' : 's'}
         </div>
         <div className="qty-control">
           <span className="qty-label">QTY</span>
@@ -149,7 +133,7 @@ export default function ShadeTable({
               strokeLinejoin="round"
             />
           </svg>
-          Print shade Number
+          Print Gemba Number
         </button>
       </div>
     </div>
