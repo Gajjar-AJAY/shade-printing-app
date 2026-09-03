@@ -134,8 +134,31 @@ export default function GembaScreen({ onBack }) {
             {/* was selectedRecords.slice(0, 6) + a "+N more" line — now shows everything selected */}
             <div className="preview-strip gemba-preview-strip">
               {selectedRecords.map((r) => (
-                <div className="sticker gemba-sticker preview-sticker gemba-preview-sticker" key={r.atqor_gembaid}>
-                  <div className="sticker-line gemba-sticker-number">{r.atqor_gembanumber}</div>
+                <div className="main-sticker-preview" key={r.atqor_gembaid}>
+                  <div
+                    className="sticker gemba-sticker preview-sticker gemba-preview-sticker"
+                    key={r.atqor_gembaid}
+                  >
+                    <div className="sticker-line gemba-sticker-number">
+                      {r.atqor_gembanumber}
+                    </div>
+                  </div>
+                  <div
+                    className="sticker gemba-sticker preview-sticker gemba-preview-sticker"
+                    key={r.atqor_gembaid}
+                  >
+                    <div className="sticker-line gemba-sticker-number">
+                      {r.atqor_gembanumber}
+                    </div>
+                  </div>
+                  <div
+                    className="sticker gemba-sticker preview-sticker gemba-preview-sticker"
+                    key={r.atqor_gembaid}
+                  >
+                    <div className="sticker-line gemba-sticker-number">
+                      {r.atqor_gembanumber}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -144,8 +167,13 @@ export default function GembaScreen({ onBack }) {
       </div>
 
       <div className="print-only">
-        <GembaStickerSheet ref={printRef} records={selectedRecords} qty={qty} brand={brand} />
+        <GembaStickerSheet
+          ref={printRef}
+          records={selectedRecords}
+          qty={qty}
+          brand={brand}
+        />
       </div>
     </div>
-  )
+  );
 }

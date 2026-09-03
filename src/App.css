@@ -583,6 +583,12 @@ input[type='checkbox'] {
 
 /* ---------- Responsive tweaks (applies to home + existing panels) ---------- */
 
+@media (max-width: 768px) {
+    .main-sticker-preview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 640px) {
   .home-shell {
     padding: 24px 16px;
@@ -643,7 +649,11 @@ input[type='checkbox'] {
     padding: 10px 10px;
   }
 }
-
+@media (max-width: 480px) {
+    .main-sticker-preview {
+        grid-template-columns: 1fr;
+    }
+}
 /* ================================================================
    Append to the bottom of App.css — must come AFTER the base .sticker
    rule so these overrides win (same specificity, later wins).
@@ -687,7 +697,7 @@ input[type='checkbox'] {
 .gemba-preview-sticker {
   transform: none;
   margin: 0;
-  width: 190px;
+  width: 100%;
   height: 68px;
   padding: 10px 14px;
   box-sizing: border-box;
@@ -696,4 +706,11 @@ input[type='checkbox'] {
  
 .gemba-preview-sticker .gemba-sticker-number {
   font-size: 1.05rem;
+}
+
+.main-sticker-preview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
 }
